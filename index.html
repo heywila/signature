@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Wila email signature</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#faf8fc;color:#2e2540;font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+main{max-width:640px;margin:0 auto;padding:28px 16px 56px}
+h1{font:400 28px/1.2 Georgia,serif;color:#5a4a6e;margin:20px 0 4px}
+.lede{margin:0 0 8px;color:#6b5f7c}
+section{background:#fff;border:1px solid #e6dff2;border-radius:14px;padding:18px 18px 20px;margin-top:18px}
+h2{font:400 20px/1.3 Georgia,serif;color:#5a4a6e;margin:0 0 12px}
+h2 b{display:inline-block;width:28px;height:28px;border-radius:50%;background:#c4b6e0;color:#2e2540;font:600 14px/28px Helvetica,Arial,sans-serif;text-align:center;margin-right:8px;vertical-align:2px}
+label{display:block;font-size:14px;color:#6b5f7c;margin-top:10px}
+input[type=text],input[type=url]{display:block;width:100%;margin-top:4px;padding:10px 12px;font:inherit;color:#2e2540;border:1px solid #cfc5e2;border-radius:8px;background:#fff}
+input:focus,button:focus,summary:focus{outline:2px solid #8f76bc;outline-offset:2px}
+.ck{display:flex;align-items:center;gap:8px;margin-top:14px}
+.ck input{width:18px;height:18px}
+.paper{background:#fff;border:1px dashed #cfc5e2;border-radius:10px;padding:18px 14px;overflow-x:auto;white-space:nowrap}
+button{display:block;width:100%;margin-top:14px;padding:14px;font:600 17px/1 Helvetica,Arial,sans-serif;color:#fff;background:#5a4a6e;border:0;border-radius:999px;cursor:pointer}
+button:active{background:#463a57}
+#m{min-height:24px;margin:10px 0 0;color:#3f6b4f;font-weight:600}
+details{border-top:1px solid #e6dff2;padding:12px 0}
+details:last-of-type{border-bottom:1px solid #e6dff2}
+summary{font-weight:600;cursor:pointer;color:#2e2540}
+ol{margin:10px 0 0;padding-left:22px}
+li{margin:6px 0}
+.note{font-size:14px;color:#6b5f7c;margin:10px 0 0}
+</style>
+</head>
+<body>
+<main>
+<img src="wila-logo.png" alt="Wila" width="150" height="42">
+<h1>Your Wila email signature</h1>
+<p class="lede">Three steps. It takes about a minute.</p>
+
+<section>
+<h2><b>1</b>Check your details</h2>
+<label>Name<input type="text" id="n" autocomplete="name"></label>
+<label>Title<input type="text" id="t" placeholder="For example: Head of Operations"></label>
+<label class="ck"><input type="checkbox" id="b">Add a booking button</label>
+<div id="bx" hidden>
+<label>Button text<input type="text" id="bl" placeholder="Book with me"></label>
+<label>Booking link<input type="url" id="bu" placeholder="https://"></label>
+</div>
+</section>
+
+<section>
+<h2><b>2</b>Copy it</h2>
+<div class="paper" id="pv"></div>
+<button type="button" id="c">Copy signature</button>
+<p id="m" role="status"></p>
+</section>
+
+<section>
+<h2><b>3</b>Paste it into your mail app</h2>
+<details id="ios">
+<summary>Mail on an iPhone or iPad</summary>
+<ol>
+<li>Open <strong>Settings</strong>, then <strong>Apps</strong>, then <strong>Mail</strong>, then <strong>Signature</strong>. On iOS 17 or earlier it is Settings, then Mail.</li>
+<li>If you have more than one email account, tap <strong>Per Account</strong> and find your heywila.com account.</li>
+<li>Delete what is in the box. Tap and hold in the empty box, then tap <strong>Paste</strong>.</li>
+<li>If the colors or sizes look wrong, shake your phone and tap <strong>Undo</strong> when it offers &ldquo;Undo Change Attributes&rdquo;.</li>
+<li>Send yourself a test email.</li>
+</ol>
+</details>
+<details id="gm">
+<summary>Gmail in a web browser</summary>
+<ol>
+<li>In Gmail, click the gear at the top right, then <strong>See all settings</strong>.</li>
+<li>On the General tab, scroll down to <strong>Signature</strong> and click <strong>Create new</strong>. Name it Wila.</li>
+<li>Click in the box on the right and paste.</li>
+<li>Under <strong>Signature defaults</strong>, choose Wila for new emails and for replies and forwards.</li>
+<li>Scroll to the bottom and click <strong>Save Changes</strong>.</li>
+</ol>
+<p class="note">The Gmail phone app uses this signature too, unless you have set a separate mobile signature in the app.</p>
+</details>
+<details id="mac">
+<summary>Mail on a Mac</summary>
+<ol>
+<li>In Mail, open <strong>Mail</strong>, then <strong>Settings</strong>, then <strong>Signatures</strong>.</li>
+<li>Select your heywila.com account on the left and click <strong>+</strong>. Name it Wila.</li>
+<li>Untick <strong>Always match my default message font</strong>.</li>
+<li>Click in the box on the right, select everything in it, and paste.</li>
+<li>Next to <strong>Choose Signature</strong>, pick Wila. Close the window.</li>
+</ol>
+</details>
+<p class="note">To change your name or title later, come back to this page, copy again, and paste over the old one. Editing the signature inside your mail app can break its layout.</p>
+</section>
+</main>
+<script>
+var LOGO='https://heywila.github.io/signature/wila-logo.png';
+var G="font-family:Georgia,'Times New Roman',serif;",S='font-family:Helvetica,Arial,sans-serif;';
+var T='cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;"';
+function $(i){return document.getElementById(i)}
+function esc(s){return s.replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function val(){
+var o={n:$('n').value.trim()||'Your Name',t:$('t').value.trim(),bl:$('bl').value.trim(),bu:$('bu').value.trim()};
+o.btn=$('b').checked&&o.bl&&/^https?:\/\/\S+$/i.test(o.bu);
+return o}
+function sig(){
+var o=val();
+var r='<tr><td style="'+G+'font-size:19px;color:#5a4a6e;letter-spacing:0.3px;padding-bottom:3px;">'+esc(o.n)+'</td></tr>';
+if(o.t)r+='<tr><td style="'+S+'font-size:11px;color:#9d7d8c;letter-spacing:2px;text-transform:uppercase;padding-bottom:10px;">'+esc(o.t)+'</td></tr>';
+r+='<tr><td style="'+G+'font-style:italic;font-size:13px;color:#8a7f99;'+(o.btn?'padding-bottom:16px;':'')+'">Honoring the Feminine, Shaping Humanity</td></tr>';
+if(o.btn)r+='<tr><td><table '+T+'><tr><td style="background-color:#c4b6e0;border-radius:20px;padding:8px 20px;"><a href="'+esc(o.bu)+'" target="_blank" style="'+S+'font-size:12px;letter-spacing:1px;color:#2e2540;text-decoration:none;display:inline-block;">'+esc(o.bl)+'</a></td></tr></table></td></tr>';
+return '<table '+T+'><tr><td style="vertical-align:middle;padding-right:24px;"><img src="'+LOGO+'" alt="WILA" width="150" height="42" style="display:block;width:150px;height:auto;border:0;"></td><td style="width:1px;background-color:#c4b6e0;font-size:1px;line-height:1px;">&nbsp;</td><td style="width:24px;font-size:1px;line-height:1px;">&nbsp;</td><td style="vertical-align:middle;"><table '+T+'>'+r+'</table></td></tr></table>'}
+function txt(){
+var o=val(),a=[o.n];
+if(o.t)a.push(o.t.toUpperCase());
+a.push('Honoring the Feminine, Shaping Humanity');
+if(o.btn)a.push(o.bl+': '+o.bu);
+return a.join('\n')}
+function draw(){$('bx').hidden=!$('b').checked;$('pv').innerHTML=sig();$('m').textContent=''}
+function done(){$('m').textContent='Copied. Now paste it into your mail app (step 3).'}
+function copy(){
+var h=sig();
+function old(){
+var r=document.createRange(),s=getSelection(),k=false;
+r.selectNodeContents($('pv'));s.removeAllRanges();s.addRange(r);
+try{k=document.execCommand('copy')}catch(e){}
+s.removeAllRanges();
+if(k)done();else $('m').textContent='Could not copy automatically. Press and hold on the signature above, choose Select All, then Copy.'}
+try{navigator.clipboard.write([new ClipboardItem({'text/html':new Blob([h],{type:'text/html'}),'text/plain':new Blob([txt()],{type:'text/plain'})})]).then(done,old)}catch(e){old()}}
+var q=new URLSearchParams(location.hash.slice(1));
+$('n').value=q.get('name')||'';
+$('t').value=q.get('title')||'';
+if(q.get('btn')){$('b').checked=true;$('bl').value=q.get('btn');$('bu').value=q.get('url')||''}
+['n','t','b','bl','bu'].forEach(function(i){$(i).addEventListener('input',draw)});
+$('c').addEventListener('click',copy);
+$(/iPhone|iPad/.test(navigator.userAgent)?'ios':'gm').open=true;
+draw();
+</script>
+</body>
+</html>
